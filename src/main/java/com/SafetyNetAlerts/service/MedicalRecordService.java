@@ -7,7 +7,7 @@ import java.util.List;
 public interface MedicalRecordService {
     List<MedicalRecord> getMedicalRecords();
 
-    List<MedicalRecord> getMedicalRecordsByFirstNameAndLastName(String firstName, String lastName);
+    List<MedicalRecord> findMedicalRecordsByFirstNameAndLastName(String firstName, String lastName);
 
     List<MedicalRecord> getMedicalRecordsByAgeRange(int MinAge, int MaxAge);
 

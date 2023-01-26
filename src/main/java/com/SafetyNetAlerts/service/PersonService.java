@@ -7,11 +7,13 @@ import java.util.List;
 public interface PersonService {
     List<Person> getPersons();
 
-    List<Person> getPersonsByFirstNameAndLastName(String firstName, String lastName);
+    List<Person> findPersonsByFirstNameAndLastName(String firstName, String lastName);
 
-    List<Person> getPersonsByAddress(String Address);
+    List<Person> findPersonsByAddress(String Address);
 
-    List<Person> getPersonsByCity(String city);
+    List<Person> findPersonsByCity(String city);
+
+    List<Person> findPersonsByStationNumber(long station_number);
 
     void addPersonInDataSource(Person person);
 

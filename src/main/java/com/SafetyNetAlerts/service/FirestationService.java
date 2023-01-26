@@ -4,11 +4,12 @@ import com.SafetyNetAlerts.model.Firestation;
 
 import java.util.List;
 
+
 public interface FirestationService {
 
     List<Firestation> getFirestations();
 
-    List<Firestation> getFirestationByItsLocationAddress(String adress);
+    List<Firestation> getFirestationByItsLocationAddress(String address);
 
     List<Firestation> getFirestationByStation(List<Firestation> firestations, int station);
 

@@ -31,4 +31,17 @@ public class GlobalData {
     public void setMedicalrecords(List<MedicalRecord> medicalrecords) {
         this.medicalrecords = medicalrecords;
     }
+
+    @Override
+    public String toString() {
+        return "GlobalData{" +
+                "persons=" + persons +
+                ", firestations=" + firestations +
+                ", medicalrecords=" + medicalrecords +
+                '}';
+    }
+
+   // public List<Person> getEmails() {
+    //    return emails;
+    //}
 }
