@@ -1,10 +1,7 @@
 package com.SafetyNetAlerts.service;
 
-import com.SafetyNetAlerts.model.GlobalData;
+import java.util.List;
 
 public interface CustomDataService {
-
-    //GlobalData read;
-
-
+    public List<String> findEmailsByCity(String City);
 }

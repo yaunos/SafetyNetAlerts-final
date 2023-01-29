@@ -23,10 +23,6 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping("/communityEmail")
-    public List<Person>  findPersonsByCity(@RequestParam("city") String city){
-        return personService.findPersonsByCity(city);
-    }
 
     @GetMapping("/childAlert")
     public List<Person>  findPersonsByAddress(@RequestParam("address") String address){
