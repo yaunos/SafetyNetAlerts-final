@@ -7,6 +7,7 @@ import java.util.List;
 public interface PersonService {
     List<Person> getPersons();
 
+
     List<Person> findPersonsByFirstNameAndLastName(String firstName, String lastName);
 
     List<Person> findPersonsByAddress(String Address);

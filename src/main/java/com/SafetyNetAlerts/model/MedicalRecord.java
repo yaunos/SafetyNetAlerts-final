@@ -2,17 +2,18 @@ package com.SafetyNetAlerts.model;
 
 import lombok.Data;
 
-import java.lang.reflect.Array;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class MedicalRecord {
 
     public String firstName;
+
     public String lastName;
     public Date birthdate;
-    public Array medication;
-    public Array allergie;
+    public List<String> medications;
+    public List<String> allergies;
 
     public String getFirstName() {
         return firstName;
@@ -38,20 +39,19 @@ public class MedicalRecord {
         this.birthdate = birthdate;
     }
 
-    public Array getMedication() {
-        return medication;
+    public List<String> getMedications() {
+        return medications;
     }
 
-    public void setMedication(Array medication) {
-        this.medication = medication;
+    public void setMedications(List<String> medications) {
+        this.medications = medications;
     }
 
-    public Array getAllergie() {
-        return allergie;
+    public List<String> getAllergies() {
+        return allergies;
     }
 
-    public void setAllergie(Array allergie) {
-        this.allergie = allergie;
+    public void setAllergies(List<String> allergies) {
+        this.allergies = allergies;
     }
-
 }

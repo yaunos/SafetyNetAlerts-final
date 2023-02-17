@@ -4,11 +4,8 @@ package com.SafetyNetAlerts.DTO;
 import lombok.Data;
 
 @Data
-public class PersonNameAddressPhoneDTO {
-
+public class PersonNameDTO {
     private String firstName;
     private String lastName;
-    private String address;
-    private String phone;
 
 }

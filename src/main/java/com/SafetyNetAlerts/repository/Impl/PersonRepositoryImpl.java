@@ -56,7 +56,8 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public List<Person> getPersonsFromGlobalData() {
-        return null;
+        List<Person> persons = globalDataRepository.read().getPersons();
+        return persons;
     }
 
     @Override

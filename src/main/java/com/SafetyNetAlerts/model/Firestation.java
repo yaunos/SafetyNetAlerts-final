@@ -1,5 +1,8 @@
 package com.SafetyNetAlerts.model;
 
+import lombok.Data;
+
+@Data
 public class Firestation {
     public String address;
     public long station;

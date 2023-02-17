@@ -8,11 +8,33 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
 public class CustomDataRepositoryImpl implements CustomDataRepository {
 
     @Autowired
     private GlobalDataRepository globalDataRepository;
+
+    @Override
+    public List<String> getPersonsMedicalInformation(String firstName, String lastName) {
+    return null;
+    }
+
+    /*
+    @Override
+    public List<String> getAddressesByStation(int station_number) {
+        GlobalData datas = globalDataRepository.read();
+        List<String> addresses = new ArrayList<>();
+        datas.getFirestations().forEach((firestation -> {
+            if(Objects.equals(station_number, firestation.getStation())){
+                addresses.add(firestation.getAddress())
+
+
+            }
+        }));
+    }
+    */
+
 
     @Override
     public List<String> getEmailsByCity(String city) {

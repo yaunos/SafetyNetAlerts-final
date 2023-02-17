@@ -25,7 +25,7 @@ public class FirestationController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping("/firestation")
+    @GetMapping("/Firestation")
     public List<Person>  findPersonnessAroundStation(@RequestParam("station_number") long station_number){
         logger.info("Get started with firestation - by number - log");
         return personService.findPersonsByStationNumber(station_number);

@@ -8,13 +8,19 @@ import com.SafetyNetAlerts.repository.GlobalDataRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.stereotype.Repository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @Repository
 public class GlobalDataRepositoryImpl implements GlobalDataRepository {
+
+    private static final Logger log = LogManager.getLogger(GlobalDataRepositoryImpl.class);
 
     public static void main(String[] args) {
 
@@ -54,12 +60,36 @@ public class GlobalDataRepositoryImpl implements GlobalDataRepository {
     }
 
     @Override
-    public void write(GlobalData data) {
+    public void write(GlobalData globalData) {
+
+        //Init which file will be written
+        String file = "src/main/resources/data.json";
+
+        //Convert Global Data into a Json format string
+        Gson gson = new GsonBuilder().setPrettyPrinting().setDateFormat("dd/MM/yyyy").create();
+        String json = gson.toJson(globalData);
+
+        //Insert some data into the file
+        PrintWriter writer;
+
+        try {
+            writer = new PrintWriter(file);
+            writer.println(json);
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            log.error("Error. Can't write into the file");
+        }
 
     }
 
     @Override
-    public void addPerson(Person person) {
+    public void addPerson(Person personToAdd) {
+        GlobalData globalData = read();
+
+        //globalData.addPerson(personToAdd);
+
+        write(globalData);
 
     }
 
