@@ -35,7 +35,7 @@ public class CustomDataServiceImpl implements CustomDataService {
     @Autowired
     private PersonService personService;
 
-    //URL 1
+    //URL 1 OK
 
     @Override
     public PersonsByStationNumberNbAdultsNbChildrenDTO findPersonsByFirestationNumber(int station_number) {
@@ -90,7 +90,7 @@ public class CustomDataServiceImpl implements CustomDataService {
 
 
 
-    //URL 2
+    //URL 2 OK
 
     @Override
     public PersonChildrenAdultsByAddressDTO findChildrenByAddress(String address) {
@@ -248,22 +248,39 @@ public class CustomDataServiceImpl implements CustomDataService {
         return result;
     }
 
-/*
+
+
+
+
     //URL 5
     @Override
-    public List<PersonNamePhoneAgeMedicalDTO> findPersonsByStationNumber(List<Station>) {
+    public  List<PersonsByAddressByStationDTO> findPersonsByStations(List<Long> stationNumber) {
         //Init
-        List<PersonNamePhoneAgeMedicalDTO> result = new linkedList<PersonNamePhoneAgeMedicalDTO;
+        //List<PersonNamePhoneAgeMedicalDTO> result = new linkedList<PersonNamePhoneAgeMedicalDTO();
+        List<PersonsByAddressByStationDTO> result = new LinkedList<PersonsByAddressByStationDTO>();
 
         //get infos
         List<Firestation> firestations = globalDataRepository.read().getFirestations();
         List<Person> persons = globalDataRepository.read().getPersons();
         List<MedicalRecord> medicalRecords = globalDataRepository.read().getMedicalrecords();
 
-        for (Firestation firestations : persons) {
-
+        for (Long i : stationNumber) {
+            //Get addresses matching firestation station number
+            List<String> matchingStationAddresses = firestationRepository.getAdressesByStationNumber(i);
+            for (String address : matchingStationAddresses) {
+                PersonsByAddressByStationDTO item = new PersonsByAddressByStationDTO();
+                item.setAddress(address);
+                List<PersonNamePhoneAgeMedicalDTO> resident = findPersonsByAddress(address);
+                item.setResidents(resident);
+                result.add(item);
+            }
         }
-*/
+
+        return result;
+    }
+
+
+
 
         //URL 6 OK
         @Override

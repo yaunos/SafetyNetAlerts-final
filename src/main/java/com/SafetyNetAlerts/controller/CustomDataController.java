@@ -1,9 +1,6 @@
 package com.SafetyNetAlerts.controller;
 
-import com.SafetyNetAlerts.DTO.PersonChildrenAdultsByAddressDTO;
-import com.SafetyNetAlerts.DTO.PersonNameAddressAgeEmailMedicalDTO;
-import com.SafetyNetAlerts.DTO.PersonNamePhoneAgeMedicalDTO;
-import com.SafetyNetAlerts.DTO.PersonsByStationNumberNbAdultsNbChildrenDTO;
+import com.SafetyNetAlerts.DTO.*;
 import com.SafetyNetAlerts.service.CustomDataService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -82,10 +79,14 @@ public class CustomDataController {
     /** URL 5
      * Read - Get persons from a list of station numbers
      * @param list of numbers 1,2,3
-     * @return all persons info and Medical Records by address
+     * @return all persons info and Medical Records by address for each station number
      */
-    //@GetMapping("/stations")
-    //public List<PersonsByAddressByStationDTO> findPersonsBy
+    @GetMapping("/flood/stations")
+    public List<PersonsByAddressByStationDTO> findPersonsByStations(@RequestParam(name="stations") List<Long> stationNumber) {
+        log.info("Command /flood/stations requested. Listing all residents by address for each station number");
+        List<PersonsByAddressByStationDTO> result = customDataService.findPersonsByStations(stationNumber);
+        return result;
+    }
 
 
     /** URL 6

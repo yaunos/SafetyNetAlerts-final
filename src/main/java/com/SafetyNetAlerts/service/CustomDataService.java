@@ -1,9 +1,6 @@
 package com.SafetyNetAlerts.service;
 
-import com.SafetyNetAlerts.DTO.PersonChildrenAdultsByAddressDTO;
-import com.SafetyNetAlerts.DTO.PersonNameAddressAgeEmailMedicalDTO;
-import com.SafetyNetAlerts.DTO.PersonNamePhoneAgeMedicalDTO;
-import com.SafetyNetAlerts.DTO.PersonsByStationNumberNbAdultsNbChildrenDTO;
+import com.SafetyNetAlerts.DTO.*;
 
 import java.util.List;
 
@@ -39,6 +36,7 @@ public interface CustomDataService {
      */
 
     /* public PersonsByAddressByStationDTO findPersonsByStation(int station_number); */
+    List<PersonsByAddressByStationDTO> findPersonsByStations(List<Long> stationNumber);
 
     /** URL 6
      * find medical Records of an inhabitant by firstname and lastname
