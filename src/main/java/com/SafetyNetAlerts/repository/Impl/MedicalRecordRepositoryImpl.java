@@ -46,16 +46,20 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
 
     @Override
     public void addMedicalRecordInDataSource(MedicalRecord medicalRecord) {
+        //globalDataRepository.addMedicalRecord(medicalRecord);
+        GlobalData global = globalDataRepository.read();
+        global.getMedicalrecords().add(medicalRecord);
+        globalDataRepository.write(global);
 
     }
 
     @Override
-    public void updateMedicalRecordInDataSource(MedicalRecord medicalRecord) {
+    public void updateMedicalRecordInDataSource(MedicalRecord medicalRecord) { globalDataRepository.updateMedicalRecord(medicalRecord);
 
     }
 
     @Override
-    public void deleteMedicalRecordInDataSource(String firstName, String LastName) {
+    public void deleteMedicalRecordInDataSource(String firstName, String LastName) { globalDataRepository.deleteMedicalRecord(firstName, LastName);
 
     }
 

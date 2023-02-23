@@ -1,7 +1,6 @@
 package com.SafetyNetAlerts.controller;
 
 import com.SafetyNetAlerts.model.Person;
-import com.SafetyNetAlerts.service.FirestationService;
 import com.SafetyNetAlerts.service.PersonService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +13,8 @@ public class PersonController {
 
      private Logger logger = LogManager.getLogger(PersonController.class);
 
-    @Autowired
-    private FirestationService firestationService;
+  //  @Autowired
+   // private FirestationService firestationService;
 
     @Autowired
     private PersonService personService;
@@ -42,7 +41,6 @@ public class PersonController {
         logger.info("Command POST /person requested. Creating a new person");
         personService.addPersonInDataSource(person);
         return person;
-
     }
 
     /**

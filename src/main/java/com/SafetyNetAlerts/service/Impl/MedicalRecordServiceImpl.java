@@ -36,17 +36,17 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
     }
 
     @Override
-    public void addMedicalRecordIntoDataSource(MedicalRecord medicalRecord) {
+    public void addMedicalRecordInDataSource(MedicalRecord medicalRecord) {
         medicalRecordRepository.addMedicalRecordInDataSource(medicalRecord);
     }
 
     @Override
-    public void updateMedicalRecordIntoDataSource(MedicalRecord medicalRecord) {
+    public void updateMedicalRecordInDataSource(MedicalRecord medicalRecord) {
         medicalRecordRepository.updateMedicalRecordInDataSource(medicalRecord);
     }
 
     @Override
-    public void deleteMedicalRecordIntoDataSource(String firstName, String lastName) {
+    public void deleteMedicalRecordInDataSource(String firstName, String lastName) {
         medicalRecordRepository.deleteMedicalRecordInDataSource(firstName, lastName);
     }
 }

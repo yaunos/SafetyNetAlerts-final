@@ -33,8 +33,8 @@ public class FirestationServiceImpl implements FirestationService {
     }
 
     @Override
-    public void addFirestationIntoDataSource(Firestation firestation) {
-        firestationRepository.addFirestationInDataSource(firestation);
+    public Firestation addFirestationIntoDataSource(Firestation firestation) {
+        return firestationRepository.addFirestationInDataSource(firestation);
     }
 
     @Override

@@ -13,7 +13,7 @@ public interface FirestationService {
 
     List<Firestation> getFirestationByStation(List<Firestation> firestations, int station);
 
-    void addFirestationIntoDataSource(Firestation firestation);
+    Firestation addFirestationIntoDataSource(Firestation firestation);
 
     void updateFirestationIntoDataSource(Firestation firestation);
 

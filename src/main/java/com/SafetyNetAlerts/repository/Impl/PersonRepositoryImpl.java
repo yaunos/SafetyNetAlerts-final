@@ -62,11 +62,15 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public void addPersonInDataSource(Person person) {
-        globalDataRepository.addPerson(person); //create
+        GlobalData global = globalDataRepository.read();
+        global.getPersons().add(person);
+        globalDataRepository.write(global);
     }
 
     @Override
     public void updatePersonInDataSource(Person person) {
+        //GlobalData global = globalDataRepository.read();
+        //global.getPersons().f
         globalDataRepository.updatePerson(person); //update
     }
 

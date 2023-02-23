@@ -14,7 +14,7 @@ public interface FirestationRepository {
 
     List<Firestation> getFirestationsByStation(List<Firestation> firestations, int station);
 
-    void addFirestationInDataSource(Firestation firestation);
+    Firestation addFirestationInDataSource(Firestation firestation);
 
     void updateFirestationInDataSource(Firestation firestation);
 

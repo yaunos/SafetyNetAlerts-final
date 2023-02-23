@@ -37,18 +37,24 @@ public class FirestationRepositoryImpl implements FirestationRepository {
     }
 
     @Override
-    public void addFirestationInDataSource(Firestation firestation) {
-        globalDataRepository.addFirestation(firestation);
+    public Firestation addFirestationInDataSource(Firestation firestation) {
+        GlobalData global = globalDataRepository.read();
+        global.getFirestations().add(firestation);
+        globalDataRepository.write(global);
+        return firestation;
     }
 
     @Override
     public void updateFirestationInDataSource(Firestation firestation) {
         globalDataRepository.updateFirestation(firestation);
+
     }
 
     @Override
     public void deleteFirestationInDataSource(String address) {
-        globalDataRepository.deleteFirestation(address);
+        //GlobalData global = globalDataRepository.read();
+        //global.getFirestations(address);
+        //globalDataRepository.deleteFirestation(global);
     }
 
     @Override

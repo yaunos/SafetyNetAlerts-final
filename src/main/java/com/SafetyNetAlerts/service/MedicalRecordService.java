@@ -11,9 +11,9 @@ public interface MedicalRecordService {
 
     List<MedicalRecord> getMedicalRecordsByAgeRange(int MinAge, int MaxAge);
 
-    void addMedicalRecordIntoDataSource(MedicalRecord medicalRecord);
+    void addMedicalRecordInDataSource(MedicalRecord medicalRecord);
 
-    void updateMedicalRecordIntoDataSource(MedicalRecord medicalRecord);
+    void updateMedicalRecordInDataSource(MedicalRecord medicalRecord);
 
-    void deleteMedicalRecordIntoDataSource(String firstName, String lastName);
+    void deleteMedicalRecordInDataSource(String firstName, String lastName);
 }
