@@ -81,9 +81,10 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void updatePersonInDataSource(Person person) {
-        personRepository.updatePersonInDataSource(person);
+    public Person updatePersonInDataSource(Person person, String firstName, String lastName) {
+        return personRepository.updatePersonInDataSource(person, firstName, lastName);
     }
+
 
     @Override
     public void deletePersonInDataSource(String firstName, String lastName) {

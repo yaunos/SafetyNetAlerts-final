@@ -38,13 +38,13 @@ public class FirestationServiceImpl implements FirestationService {
     }
 
     @Override
-    public void updateFirestationIntoDataSource(Firestation firestation) {
-        firestationRepository.updateFirestationInDataSource(firestation);
+    public Firestation updateFirestationIntoDataSource(Firestation firestation, String address, Long station) {
+        return firestationRepository.updateFirestationInDataSource(firestation, address, station);
     }
 
     @Override
-    public void deleteFirestationIntoDataSource(String address) {
-        firestationRepository.deleteFirestationInDataSource(address);
+    public void deleteFirestationIntoDataSource(Long station, String address) {
+        firestationRepository.deleteFirestationInDataSource(station, address);
     }
 }
 

@@ -48,8 +48,9 @@ public class PersonController {
      *
      */
     @PutMapping("/person")
-    public Person updatePerson(@RequestBody Person person) {
+    public Person updatePerson(@RequestBody Person person, @RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName) {
         logger.info("Command PUT /person requested. Updating a registered person");
+        personService.updatePersonInDataSource(person, firstName, lastName);
         return person;
     }
 

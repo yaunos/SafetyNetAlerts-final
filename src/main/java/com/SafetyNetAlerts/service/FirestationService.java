@@ -15,8 +15,8 @@ public interface FirestationService {
 
     Firestation addFirestationIntoDataSource(Firestation firestation);
 
-    void updateFirestationIntoDataSource(Firestation firestation);
+    Firestation updateFirestationIntoDataSource(Firestation firestation, String address, Long station);
 
-    void deleteFirestationIntoDataSource(String Address);
+    void deleteFirestationIntoDataSource(Long station, String address);
 
 }

@@ -16,9 +16,11 @@ public interface FirestationRepository {
 
     Firestation addFirestationInDataSource(Firestation firestation);
 
-    void updateFirestationInDataSource(Firestation firestation);
+    //Firestation updateFirestationInDataSource(String address);
 
-    void deleteFirestationInDataSource(String address);
+    Firestation updateFirestationInDataSource(Firestation firestation, String address, Long station);
+
+    void deleteFirestationInDataSource(Long station, String address);
 
     List<String> getAdressesByStationNumber(long stationNumber);
 }

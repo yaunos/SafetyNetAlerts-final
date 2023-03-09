@@ -45,16 +45,32 @@ public class FirestationRepositoryImpl implements FirestationRepository {
     }
 
     @Override
-    public void updateFirestationInDataSource(Firestation firestation) {
-        globalDataRepository.updateFirestation(firestation);
+    public Firestation updateFirestationInDataSource(Firestation firestation, String address, Long station) {
+        GlobalData global = globalDataRepository.read();
+        global.getFirestations().forEach((firestation1 -> {
+            if(firestation1.getAddress().equals(address)&&firestation1.getStation() == station) {
+                firestation1.setStation(firestation.getStation());
+                firestation1.setAddress(firestation.getAddress());
+            }
+        }));
+        globalDataRepository.write(global);
+        return firestation;
 
     }
 
     @Override
-    public void deleteFirestationInDataSource(String address) {
-        //GlobalData global = globalDataRepository.read();
-        //global.getFirestations(address);
-        //globalDataRepository.deleteFirestation(global);
+    public void deleteFirestationInDataSource(Long station, String address) {
+        GlobalData global = globalDataRepository.read();
+        List<Firestation> lf = new ArrayList<>();
+
+        for (Firestation firestation : global.getFirestations()) {
+            if((address!=null && firestation.getAddress().equals(address)) || (station!=null && firestation.getStation() == station)) {
+                lf.add(firestation);
+            }
+        }
+        global.getFirestations().removeAll(lf);
+        globalDataRepository.write(global);
+
     }
 
     @Override

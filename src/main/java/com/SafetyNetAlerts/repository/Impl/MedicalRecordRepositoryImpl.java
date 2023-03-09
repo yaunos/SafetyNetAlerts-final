@@ -54,14 +54,34 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
     }
 
     @Override
-    public void updateMedicalRecordInDataSource(MedicalRecord medicalRecord) { globalDataRepository.updateMedicalRecord(medicalRecord);
-
+    public void updateMedicalRecordInDataSource(MedicalRecord medicalRecord, String firstName, String lastName) {
+        //globalDataRepository.updateMedicalRecord(medicalRecord);
+        GlobalData global = globalDataRepository.read();
+        global.getMedicalrecords().forEach((medicalRecord1 -> {
+            if(medicalRecord1.getFirstName().equals(firstName)&&medicalRecord1.getLastName().equals(lastName)) {
+                medicalRecord1.setBirthdate(medicalRecord.getBirthdate());
+                medicalRecord1.setMedications(medicalRecord.getMedications());
+                medicalRecord1.setAllergies(medicalRecord.getAllergies());
+            }
+        }));
+        globalDataRepository.write(global);
+        //return medicalRecord;
     }
 
     @Override
-    public void deleteMedicalRecordInDataSource(String firstName, String LastName) { globalDataRepository.deleteMedicalRecord(firstName, LastName);
-
+    public void deleteMedicalRecordInDataSource(String firstName, String lastName) {
+        GlobalData global = globalDataRepository.read();
+        MedicalRecord medicalRecordToDelete = null;
+        for (MedicalRecord medicalRecord : global.getMedicalrecords()) {
+            //if (firstName.equals(medicalRecord.getFirstName())&& lastName.equals(medicalRecord.getLastName())) {
+            if ((medicalRecord.getFirstName().equals(firstName))&&(medicalRecord.getLastName().equals(lastName))) {
+                medicalRecordToDelete = medicalRecord;
+            }
+        }
+        global.getMedicalrecords().remove(medicalRecordToDelete);
+        globalDataRepository.write(global);
     }
+
 
     @Override
     public int getAge(MedicalRecord medicalRecord) {

@@ -48,9 +48,9 @@ public class MedicalRecordController {
      */
 
     @PutMapping("/medicalRecord")
-    public MedicalRecord updateMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+    public MedicalRecord updateMedicalRecord(@RequestBody MedicalRecord medicalRecord, @RequestParam (name = "firstName") String firstName, @RequestParam (name = "lastName") String lastName) {
         logger.info("Command PUT /medicalRecord requested. Update of a medical record");
-        medicalRecordService.updateMedicalRecordInDataSource(medicalRecord);
+        medicalRecordService.updateMedicalRecordInDataSource(medicalRecord, firstName, lastName);
         return medicalRecord;
     }
 
@@ -61,7 +61,7 @@ public class MedicalRecordController {
 
     @DeleteMapping("/medicalRecord")
     public void deleteMedicalRecord(@RequestParam (name = "firstName") String firstName, @RequestParam (name = "lastName") String lastName) {
-        logger.info("Command DELETE /medicalRecord requested. Deletion of " + firstName + " " + lastName + " medical record");
+        logger.info("Command DELETE /medicalRecord requested. Deletion of " + firstName + " " + lastName + "'s medical record");
         medicalRecordService.deleteMedicalRecordInDataSource(firstName, lastName);
     }
 }

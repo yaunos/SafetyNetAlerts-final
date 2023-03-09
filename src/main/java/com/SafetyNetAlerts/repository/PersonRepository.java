@@ -17,7 +17,10 @@ public interface PersonRepository {
 
     void addPersonInDataSource(Person person);
 
-    void updatePersonInDataSource(Person person);
+
+    //Person updatePersonInDataSource(Person person);
+
+    Person updatePersonInDataSource(Person person, String lastName, String firstName);
 
     void deletePersonFromDataSource(String firstName, String LastName);
 }

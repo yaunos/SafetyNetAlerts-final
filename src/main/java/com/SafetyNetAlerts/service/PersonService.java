@@ -18,7 +18,8 @@ public interface PersonService {
 
     void addPersonInDataSource(Person person);
 
-    void updatePersonInDataSource(Person person);
+    //Person updatePersonInDataSource(Person person);
+    Person updatePersonInDataSource(Person person, String firstName, String lastName);
 
     void deletePersonInDataSource(String firstName, String lastName);
 }

@@ -18,7 +18,8 @@ public interface MedicalRecordRepository {
 
     void addMedicalRecordInDataSource(MedicalRecord medicalRecord);
 
-    void updateMedicalRecordInDataSource(MedicalRecord medicalRecord);
+
+    void updateMedicalRecordInDataSource(MedicalRecord medicalRecord, String firstName, String lastName);
 
     void deleteMedicalRecordInDataSource(String firstName, String LastName);
 

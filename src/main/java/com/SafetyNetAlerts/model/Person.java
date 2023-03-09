@@ -16,7 +16,7 @@ public class Person {
     public String phone;
     public String email;
 
-    public Person(String firstName, String lastName, Date birthDate, String address, String city, Long zip, String phone, String email) {
+    public Person() {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,6 +27,7 @@ public class Person {
         this.phone = phone;
         this.email = email;
     }
+
 
     public String getFirstName() {
         return firstName;
