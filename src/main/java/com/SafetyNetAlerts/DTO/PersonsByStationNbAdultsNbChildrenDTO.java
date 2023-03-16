@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class PersonsByStationNumberNbAdultsNbChildrenDTO {
+public class PersonsByStationNbAdultsNbChildrenDTO {
 
     private List<PersonNameAddressPhoneDTO> persons;
 

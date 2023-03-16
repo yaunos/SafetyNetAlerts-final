@@ -12,7 +12,7 @@ public interface CustomDataService {
      *
      * @return an object PersonsByStationNumberNbAdultsNbChildren containing all needed information
      */
-     public PersonsByStationNumberNbAdultsNbChildrenDTO findPersonsByFirestationNumber(int station_number);
+     public PersonsByStationNbAdultsNbChildrenDTO findPersonsByFirestationNumber(int station_number);
 
     /** URL 2
      *

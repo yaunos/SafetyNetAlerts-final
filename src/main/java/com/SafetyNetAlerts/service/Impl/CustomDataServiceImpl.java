@@ -38,9 +38,9 @@ public class CustomDataServiceImpl implements CustomDataService {
     //URL 1 OK
 
     @Override
-    public PersonsByStationNumberNbAdultsNbChildrenDTO findPersonsByFirestationNumber(int station_number) {
+    public PersonsByStationNbAdultsNbChildrenDTO findPersonsByFirestationNumber(int station_number) {
         //Init
-        PersonsByStationNumberNbAdultsNbChildrenDTO output = new PersonsByStationNumberNbAdultsNbChildrenDTO();
+        PersonsByStationNbAdultsNbChildrenDTO output = new PersonsByStationNbAdultsNbChildrenDTO();
         List<PersonNameAddressPhoneDTO> listPersons = new LinkedList<PersonNameAddressPhoneDTO>();
         int nbChildren = 0;
         int nbAdults = 0;

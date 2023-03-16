@@ -2,17 +2,15 @@ package com.SafetyNetAlerts.model;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class Person {
 
     public String firstName;
     public String lastName;
-    public Date birthdate;
+//    public Date birthdate;
     public String address;
     public String city;
-    public Long zip;
+    public String zip;
     public String phone;
     public String email;
 
@@ -20,7 +18,7 @@ public class Person {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthdate = birthdate;
+ //       this.birthdate = birthdate;
         this.address = address;
         this.city = city;
         this.zip = zip;
@@ -45,13 +43,9 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
-    }
+  //  public Date getBirthdate() {return birthdate;}
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
+  //  public void setBirthdate(Date birthdate) {this.birthdate = birthdate;}
 
     public String getAddress() {
         return address;
@@ -69,11 +63,11 @@ public class Person {
         this.city = city;
     }
 
-    public long getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(long zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 

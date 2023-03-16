@@ -29,9 +29,9 @@ public class CustomDataController {
 
 
     @GetMapping("/firestation")
-    public PersonsByStationNumberNbAdultsNbChildrenDTO findPersonsByFirestationNumber(@RequestParam("station_number") int station_number) {
+    public PersonsByStationNbAdultsNbChildrenDTO findPersonsByFirestationNumber(@RequestParam("station_number") int station_number) {
         log.info("Command /firestation requested. Returning a list of persons in the area covered by station number : "+ station_number);
-        PersonsByStationNumberNbAdultsNbChildrenDTO result = customDataService.findPersonsByFirestationNumber(station_number);
+        PersonsByStationNbAdultsNbChildrenDTO result = customDataService.findPersonsByFirestationNumber(station_number);
         return result;
     }
 
