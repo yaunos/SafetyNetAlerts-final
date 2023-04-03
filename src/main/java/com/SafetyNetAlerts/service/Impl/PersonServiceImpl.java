@@ -2,7 +2,6 @@ package com.SafetyNetAlerts.service.Impl;
 
 import com.SafetyNetAlerts.model.Person;
 import com.SafetyNetAlerts.repository.FirestationRepository;
-import com.SafetyNetAlerts.repository.GlobalDataRepository;
 import com.SafetyNetAlerts.repository.PersonRepository;
 import com.SafetyNetAlerts.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,8 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    @Autowired
-    private GlobalDataRepository globalDataRepository;
+//    @Autowired
+//    private GlobalDataRepository globalDataRepository;
 
     @Autowired
     private FirestationRepository firestationRepository;
@@ -38,8 +37,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> findPersonsByFirstNameAndLastName(String firstName, String lastName) {
-        List<Person> persons = globalDataRepository.read().getPersons();
-        List<Person> matchingFirstNameAndLastName = personRepository.getPersonsByFirstNameAndLastName(firstName, lastName);
+        //List<Person> persons = globalDataRepository.read().getPersons();
+        List<Person> matchingFirstNameAndLastName = personRepository.findPersonsByFirstNameAndLastName(firstName, lastName);
 
         return matchingFirstNameAndLastName;
     }
@@ -87,7 +86,8 @@ public class PersonServiceImpl implements PersonService {
 
 
     @Override
-    public void deletePersonInDataSource(String firstName, String lastName) {
+    public List<Person> deletePersonInDataSource(String firstName, String lastName) {
         personRepository.deletePersonFromDataSource(firstName, lastName);
+        return null;
     }
 }

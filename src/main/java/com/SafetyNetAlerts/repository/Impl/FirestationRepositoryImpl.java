@@ -23,20 +23,6 @@ public class FirestationRepositoryImpl implements FirestationRepository {
     }
 
     @Override
-    public List<Firestation> getFirestationsByAddressLocation(List<Firestation> firestations, String address) {
-       // Firestation firestationAtThisAddress = null;
-       // For(Firestation F)
-       // If (List.firestationAtThisAddress = null; new LinkedList<>();
-        // return firestationAtThisAddress;
-        return null;
-    }
-
-    @Override
-    public List<Firestation> getFirestationsByStation(List<Firestation> firestations, int station) {
-        return null;
-    }
-
-    @Override
     public Firestation addFirestationInDataSource(Firestation firestation) {
         GlobalData global = globalDataRepository.read();
         global.getFirestations().add(firestation);

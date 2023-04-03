@@ -19,7 +19,12 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
 
     @Override
     public List<MedicalRecord> getMedicalRecordsFromDataSource() {
-        return null;
+        List<MedicalRecord> medicalRecordsList = new LinkedList<>();
+        GlobalData datas = globalDataRepository.read();
+        for (MedicalRecord m : datas.getMedicalrecords()) {
+            medicalRecordsList.add(m);
+        }
+        return  medicalRecordsList;
     }
 
     @Override

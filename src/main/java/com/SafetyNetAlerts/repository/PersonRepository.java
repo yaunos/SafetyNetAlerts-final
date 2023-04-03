@@ -8,19 +8,19 @@ public interface PersonRepository {
 
     List<Person> getPersonsFromGlobalData();
 
-    List<Person> getPersonsByFirstNameAndLastName(String firstName, String lastName);
+    List<Person> findPersonsByFirstNameAndLastName(String firstName, String lastName);
         Person matchingPerson = null;
 
     List<Person> getPersonsByAddress(String Address);
 
     List<Person> getPersonsByCity(String city);
 
-    void addPersonInDataSource(Person person);
+    List<Person> addPersonInDataSource(Person person);
 
 
     //Person updatePersonInDataSource(Person person);
 
-    Person updatePersonInDataSource(Person person, String lastName, String firstName);
+    Person updatePersonInDataSource(Person person, String firstName, String lastName);
 
-    void deletePersonFromDataSource(String firstName, String LastName);
+    List<Person> deletePersonFromDataSource(String firstName, String LastName);
 }

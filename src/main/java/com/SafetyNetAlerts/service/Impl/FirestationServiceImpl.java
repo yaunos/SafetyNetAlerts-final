@@ -22,17 +22,6 @@ public class FirestationServiceImpl implements FirestationService {
     }
 
     @Override
-    public List<Firestation> getFirestationByItsLocationAddress(String address) {
-        List<Firestation> firestations = globalDataRepository.read().getFirestations();
-        return firestationRepository.getFirestationsByAddressLocation(firestations, address);
-    }
-
-    @Override
-    public List<Firestation> getFirestationByStation(List<Firestation> firestations, int station) {
-        return firestationRepository.getFirestationsByStation(firestations, station);
-    }
-
-    @Override
     public Firestation addFirestationIntoDataSource(Firestation firestation) {
         return firestationRepository.addFirestationInDataSource(firestation);
     }

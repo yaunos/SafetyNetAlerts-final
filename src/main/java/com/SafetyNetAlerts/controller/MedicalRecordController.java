@@ -22,7 +22,10 @@ public class MedicalRecordController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping("/medrec")
+    /**
+     * Read a MedicalRecord
+     */
+    @GetMapping("/medicalRecord")
     public List<MedicalRecord> findMedicalRecordsByFirstNameAndLastName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
         return medicalRecordService.findMedicalRecordsByFirstNameAndLastName(firstName, lastName);
     }
@@ -30,18 +33,12 @@ public class MedicalRecordController {
     /**
      * Create a MedicalRecord
      */
-
     @PostMapping("/medicalRecord")
     public MedicalRecord createMedicalRecordInDataSource(@RequestBody MedicalRecord medicalRecord) {
         logger.info("Command POST /medicalRecord requested. Creation of a medical record");
         medicalRecordService.addMedicalRecordInDataSource(medicalRecord);
         return medicalRecord;
     }
-
-
-    /**
-     * Read a MedicalRecord
-     */
 
     /**
      * Update a MedicalRecord

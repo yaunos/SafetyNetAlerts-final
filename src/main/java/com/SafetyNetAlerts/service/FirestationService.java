@@ -9,10 +9,6 @@ public interface FirestationService {
 
     List<Firestation> getFirestations();
 
-    List<Firestation> getFirestationByItsLocationAddress(String address);
-
-    List<Firestation> getFirestationByStation(List<Firestation> firestations, int station);
-
     Firestation addFirestationIntoDataSource(Firestation firestation);
 
     Firestation updateFirestationIntoDataSource(Firestation firestation, String address, Long station);

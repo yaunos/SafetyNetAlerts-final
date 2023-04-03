@@ -17,7 +17,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Autowired
     private GlobalDataRepository globalDataRepository;
 
-    public List<Person> getPersonsByFirstNameAndLastName(String firstName, String lastName) {
+    public List<Person> findPersonsByFirstNameAndLastName(String firstName, String lastName) {
         List<Person> matchingPerson = new LinkedList<>();
         GlobalData datas = globalDataRepository.read();
         for (Person p : datas.getPersons()) {
@@ -61,10 +61,12 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     @Override
-    public void addPersonInDataSource(Person person) {
+    public List<Person> addPersonInDataSource(Person person) {
         GlobalData global = globalDataRepository.read();
         global.getPersons().add(person);
         globalDataRepository.write(global);
+        //return null;
+        return null;
     }
 
     @Override
@@ -86,8 +88,9 @@ public class PersonRepositoryImpl implements PersonRepository {
         return person;
     }
 
+
     @Override
-    public void deletePersonFromDataSource(String firstName, String lastName) {
+    public List<Person> deletePersonFromDataSource(String firstName, String lastName) {
         //globalDataRepository.deletePerson(firstName, lastName); //delete
         GlobalData global = globalDataRepository.read();
 
@@ -100,5 +103,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         }
         global.getPersons().remove(personToDelete);
         globalDataRepository.write(global);
+        //A vérifier
+        return global.getPersons();
     }
 }

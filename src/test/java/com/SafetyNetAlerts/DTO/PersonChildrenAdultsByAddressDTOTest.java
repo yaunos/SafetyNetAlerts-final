@@ -33,6 +33,7 @@ public class PersonChildrenAdultsByAddressDTOTest {
             assertEquals(false, DTOTest.equals(DTOTest2));
         }
 
+
         @Test
         public void DTOToStringTest() {
 

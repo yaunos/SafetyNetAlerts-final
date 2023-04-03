@@ -1,54 +1,102 @@
 package com.SafetyNetAlerts.repository;
 
+import com.SafetyNetAlerts.TestUtils;
 import com.SafetyNetAlerts.model.Firestation;
-import org.junit.jupiter.api.BeforeAll;
+import com.SafetyNetAlerts.model.GlobalData;
+import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-@TestInstance(Lifecycle.PER_CLASS)
+//@TestInstance(Lifecycle.PER_CLASS)
 @SpringBootTest
-
+//@RunWith(SpringRunner.class)
 public class FirestationRepositoryTest {
 
 
         @Autowired
         private FirestationRepository firestationRepository;
 
+        @MockBean
+        private GlobalDataRepository globalDataRepository;
+
         public static List<Firestation> allFirestations;
 
-        @BeforeAll
-        public void setUp() {
-            allFirestations = firestationRepository.getFirestationsFromGlobalData();
+
+        @BeforeEach()
+        public void beforeEach(){
+            GlobalData global = TestUtils.initDatas();
+            Mockito.when(globalDataRepository.read()).thenReturn(global);
         }
 
         @Test
-        public void getFirestationsFromGlobalDataTest() {
-            String address0 = allFirestations.get(0).getAddress();
-            Long station1 = allFirestations.get(1).getStation();
+        public void getFirestationsByAddressTest(){
+                List<String> results = firestationRepository.getAdressesByStationNumber(1);
 
-            assertEquals("1509 Culver St", address0);
-            assertEquals(2, station1);
+                Assert.assertNotNull(results);
+                Assert.assertEquals(results.size(), 1);
+                String address = results.get(0);
+                Assert.assertEquals("30 rue Maplace", address);
+               // Assert.assertEquals("30 rue Maplace", firestation.getAddress());
+               // Assert.assertEquals("", firestation.getStation());
+
         }
 
-        /*
         @Test
-        public void getFirestationByAddressTest() {
-            List<Firestation> foundFirestations = firestationRepository.getFirestationsByAddressLocation(allFirestations, "748 Townings Dr");
+        public void getFirestationsFromGlobalDataTest(){
+                List<Firestation> results = firestationRepository.getFirestationsFromGlobalData();
 
-            String address = foundFirestations.get(0).getAddress();
-            Long station = foundFirestations.get(0).getStation();
-
-            assertEquals("748 Townings Dr", address);
-            assertEquals(3, station);
+                Assert.assertNotNull(results);
+                Assert.assertEquals(results.size(), 3);
         }
 
+
+        @Test
+        public void deleteFireStationTest() {
+
+                firestationRepository.deleteFirestationInDataSource(1L, "30 rue Maplace");
+                List<Firestation> firestations = firestationRepository.getFirestationsFromGlobalData();
+
+                Assert.assertNotNull(firestations);
+                Assert.assertEquals(2, firestations.size());
+
+        }
+
+        @Test
+        public void updateFirestationTest(){
+                Firestation newFirestation = new Firestation();
+                newFirestation.setStation(1L);
+                newFirestation.setAddress("34 rue Maplace");
+                firestationRepository.updateFirestationInDataSource(newFirestation, "30 rue Maplace", 1L);
+
+                List<String> addresses = firestationRepository.getAdressesByStationNumber(1L);
+
+                Assert.assertNotNull(addresses);
+                Assert.assertEquals("34 rue Maplace", addresses.get(0));
+
+        }
+
+        @Test
+        public void addFirestationTest(){
+                Firestation newStation = new Firestation();
+                newStation.setAddress("34 rue Maplace");
+                newStation.setStation(4L);
+                firestationRepository.addFirestationInDataSource(newStation);
+
+                List<Firestation> stations = firestationRepository.getFirestationsFromGlobalData();
+
+                Assert.assertNotNull(stations);
+                Assert.assertEquals(4, stations.size());
+        }
+
+
+
+/*
         @Test
         public void getFirestationsByStationTest() {
             List<Firestation> foundFirestations = firestationRepository.getFirestationsByStation( allFirestations, (2));
@@ -65,6 +113,6 @@ public class FirestationRepositoryTest {
 
         }
 
-         */
+*/
 }
 
