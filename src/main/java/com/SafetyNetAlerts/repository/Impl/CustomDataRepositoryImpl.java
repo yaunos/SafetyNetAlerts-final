@@ -41,7 +41,7 @@ public class CustomDataRepositoryImpl implements CustomDataRepository {
         GlobalData datas = globalDataRepository.read();
         List<String> emails = new ArrayList<>();
         datas.getPersons().forEach((person -> {
-            if(city.equals(person.getCity())){
+            if (city.equals(person.getCity()) && (!emails.contains(person.getEmail()))) {
                 emails.add(person.getEmail());
             }
         }));
