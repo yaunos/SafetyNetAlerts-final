@@ -16,12 +16,23 @@ public class FirestationRepositoryImpl implements FirestationRepository {
     @Autowired
     private GlobalDataRepository globalDataRepository;
 
+
+    /**
+     * @return a list of firestations from globalDataRepository
+     */
     @Override
     public List<Firestation> getFirestationsFromGlobalData() {
         List<Firestation> firestations = globalDataRepository.read().getFirestations();
         return firestations;
     }
 
+
+    /**
+     * This method adds a firesatation in a list of firestations
+     *
+     * @param firestation
+     *
+     */
     @Override
     public Firestation addFirestationInDataSource(Firestation firestation) {
         GlobalData global = globalDataRepository.read();
@@ -30,6 +41,11 @@ public class FirestationRepositoryImpl implements FirestationRepository {
         return firestation;
     }
 
+
+    /**
+     * This method updates a firestation in a list of firestations
+     *
+     */
     @Override
     public Firestation updateFirestationInDataSource(Firestation firestation, String address, Long station) {
         GlobalData global = globalDataRepository.read();
@@ -44,6 +60,10 @@ public class FirestationRepositoryImpl implements FirestationRepository {
 
     }
 
+    /**
+     * This method delete a firestation in a list of firestations
+     *
+     */
     @Override
     public void deleteFirestationInDataSource(Long station, String address) {
         GlobalData global = globalDataRepository.read();
@@ -59,6 +79,10 @@ public class FirestationRepositoryImpl implements FirestationRepository {
 
     }
 
+    /**
+     * This method gets all addresses around a station number
+     *
+     */
     @Override
     public List<String> getAdressesByStationNumber(long stationNumber) {
         GlobalData datas = globalDataRepository.read();

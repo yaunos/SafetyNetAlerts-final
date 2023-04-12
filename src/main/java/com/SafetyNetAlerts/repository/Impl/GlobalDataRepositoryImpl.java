@@ -30,6 +30,11 @@ public class GlobalDataRepositoryImpl implements GlobalDataRepository {
         System.out.println(globaldata);
 
     }
+
+    /**
+     * This method reads the Json file and put it in a string
+     *
+     */
     @Override
     public GlobalData read() {
         try {
@@ -59,6 +64,10 @@ public class GlobalDataRepositoryImpl implements GlobalDataRepository {
         return new String(Files.readAllBytes(Paths.get(file)));
     }
 
+    /**
+     * This method takes some string data and write it into the original Json file
+     *
+     */
     @Override
     public void write(GlobalData globalData) {
 

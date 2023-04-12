@@ -17,6 +17,11 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Autowired
     private GlobalDataRepository globalDataRepository;
 
+    /**
+     * This method finds persons from the following parameters
+     * @param firstName
+     * @param lastName
+     */
     public List<Person> findPersonsByFirstNameAndLastName(String firstName, String lastName) {
         List<Person> matchingPerson = new LinkedList<>();
         GlobalData datas = globalDataRepository.read();
@@ -30,6 +35,11 @@ public class PersonRepositoryImpl implements PersonRepository {
 //        return null;
     }
 
+
+    /**
+     * This method finds persons from the following parameter
+     * @param address
+     */
     public List<Person> getPersonsByAddress(String address) {
         List<Person> output = new ArrayList<>();
         GlobalData datas = globalDataRepository.read();
@@ -42,7 +52,10 @@ public class PersonRepositoryImpl implements PersonRepository {
         return output;
     }
 
-
+    /**
+     * This method finds persons from the following parameters
+     * @param city
+     */
     public List<Person> getPersonsByCity(String city) {
         List<Person> output = new ArrayList<>();
         GlobalData datas = globalDataRepository.read();
@@ -54,12 +67,19 @@ public class PersonRepositoryImpl implements PersonRepository {
         return output;
     }
 
+    /**
+     * This method finds persons from the globalData source
+     */
     @Override
     public List<Person> getPersonsFromGlobalData() {
         List<Person> persons = globalDataRepository.read().getPersons();
         return persons;
     }
 
+    /**
+     * This method adds persons in the data source from the following parameter
+     * @param person
+     */
     @Override
     public List<Person> addPersonInDataSource(Person person) {
         GlobalData global = globalDataRepository.read();
@@ -69,6 +89,13 @@ public class PersonRepositoryImpl implements PersonRepository {
         return null;
     }
 
+
+    /**
+     * This method adds a person in the data source from the following parameter
+     * @param person
+     * @param firstName
+     * @param lastName
+     */
     @Override
     public Person updatePersonInDataSource(Person person, String firstName, String lastName) {
 
@@ -88,7 +115,11 @@ public class PersonRepositoryImpl implements PersonRepository {
         return person;
     }
 
-
+    /**
+     * This method deletes a persons in the data source from the following parameter
+     * @param firstName
+     * @param lastName
+     */
     @Override
     public List<Person> deletePersonFromDataSource(String firstName, String lastName) {
         //globalDataRepository.deletePerson(firstName, lastName); //delete

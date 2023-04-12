@@ -17,7 +17,11 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
     @Autowired
     private GlobalDataRepository globalDataRepository;
 
-    @Override
+
+    /**
+     * This method gets all medical records from the data source
+     *
+     */@Override
     public List<MedicalRecord> getMedicalRecordsFromDataSource() {
         List<MedicalRecord> medicalRecordsList = new LinkedList<>();
         GlobalData datas = globalDataRepository.read();
@@ -27,6 +31,11 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         return  medicalRecordsList;
     }
 
+    /**
+     * This method gets all medical records from the following parameters
+     * @param firstName
+     * @param lastName
+     */
     @Override
     public List<MedicalRecord> getMedicalRecordsFromFirstNameAndLastName(String firstName, String lastName) {
         List<MedicalRecord> matchingMedicalRecordsList = new LinkedList<>();
@@ -49,6 +58,10 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         return null;
     }
 
+    /**
+     * This method adds a medical record from the following parameters
+     * @param medicalRecord
+     */
     @Override
     public void addMedicalRecordInDataSource(MedicalRecord medicalRecord) {
         //globalDataRepository.addMedicalRecord(medicalRecord);
@@ -58,6 +71,12 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
 
     }
 
+    /**
+     * This method updates a medical record from the following parameters
+     * @param medicalRecord
+     * @param firstName
+     * @param lastName
+     */
     @Override
     public void updateMedicalRecordInDataSource(MedicalRecord medicalRecord, String firstName, String lastName) {
         //globalDataRepository.updateMedicalRecord(medicalRecord);
@@ -73,6 +92,11 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         //return medicalRecord;
     }
 
+    /**
+     * This method deletes a medical record from the following parameters
+     * @param firstName
+     * @param lastName
+     */
     @Override
     public void deleteMedicalRecordInDataSource(String firstName, String lastName) {
         GlobalData global = globalDataRepository.read();

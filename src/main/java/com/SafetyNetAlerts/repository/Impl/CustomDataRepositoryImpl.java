@@ -35,7 +35,10 @@ public class CustomDataRepositoryImpl implements CustomDataRepository {
     }
     */
 
-
+    /**
+     * @param city
+     * @return a list of emails
+     */
     @Override
     public List<String> getEmailsByCity(String city) {
         GlobalData datas = globalDataRepository.read();
